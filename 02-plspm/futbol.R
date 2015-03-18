@@ -2,6 +2,7 @@ library("plspm")
 
 # Load data
 data(spainfoot)
+attributes(spainfoot)
 
 # Display data
 head(spainfoot, n=6)
@@ -33,6 +34,7 @@ innerplot(foot_inner)
 
 # define list of indicators
 foot_outer = list(1:4, 5:8, 9:12)
+foot_outer
 
 # Tell variables are reflexive
 foot_modes = c("A", "A", "A")
@@ -92,6 +94,36 @@ plot(foot_pls2, what="loadings")
 plot(foot_pls2, what="weights")
 
 # Show best teams
-head(foot_pls$scores)
+head(foot_pls2$scores)
 # Show worst teams
-tail(foot_pls$scores)
+tail(foot_pls2$scores)
+
+
+# Unidimensionallity
+foot_pls2$unidim
+
+#  Alphas must be higher than 0.7 to be acceotable (rule of thumb)
+foot_pls2$unidim[, 3, drop = FALSE]
+
+# Loadings and communalities
+# communality must be higher than 0.7 (comes form 0.7^2 = 50% of variance)
+foot_pls2$outer_model
+
+# Cross loadings
+# Does parameter is useful to describe blocks?
+foot_pls2$crossloadings
+
+# Explanation of the blocks
+foot_pls2$inner_model
+foot_pls2$inner_summary
+
+# Goodness of fit (should be higher than 0.70)
+foot_pls2$gof
+
+# Validation
+# Bootstraping: Add some noise to the original data to make sure that the model correctly
+# describes data.
+foot_val = plspm(spainfoot, foot_inner2, foot_outer2, foot_modes, boot.val = TRUE, br = 500)
+
+# Bootstraping results
+foot_val$boot
