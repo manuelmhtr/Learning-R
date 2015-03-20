@@ -18,7 +18,6 @@ stats$DivWin =  ifelse(stats$DivWin == "Y", 1, 0);
 stats$WCWin  =  ifelse(stats$WCWin  == "Y", 1, 0);
 stats$LgWin  =  ifelse(stats$LgWin  == "Y", 1, 0);
 stats$WSWin  =  ifelse(stats$WSWin  == "Y", 1, 0);
-stats$Wins   =  stats$DivWin + stats$WCWin + stats$LgWin + stats$WSWin;
 stats$Rank   = stats$Rank * -1;
 stats$L      = stats$L    * -1;
 stats$RA     = stats$RA   * -1;
@@ -58,8 +57,8 @@ Attack  = c(0, 0, 0)
 Defense = c(0, 0, 0)
 Success = c(1, 1, 0)
 
-Attack_cols  = c(12,14,17,20,26);#12,14,17,20,26
-Defense_cols = c(24,28,25);#24,28,25
+Attack_cols  = c(12,14,17);#12,14,17,20,26
+Defense_cols = c(24,28,25,26);#24,28,25
 Success_cols = c(6,7,3);#6,7,3
 
 # Matrix created by row binding

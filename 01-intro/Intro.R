@@ -81,6 +81,24 @@ A %*% solve(B)
 B %*% t(A)
 
 # Ex 5.
+# La estad??stica se divide en dos grandes ??reas:
+#
+# * Estad??stica descriptiva
+# Se dedica a la descripci??n, visualizaci??n y resumen de datos originados a partir de los fen??menos de estudio. 
+# Los datos pueden ser resumidos num??rica o gr??ficamente. Ejemplos b??sicos de par??metros estad??sticos son: la 
+# media y la desviaci??n est??ndar. Algunos ejemplos gr??ficos son:histograma, pir??mide poblacional, gr??fico 
+# circular, entre otros.
+#
+# * Estad??stica inferencial
+# Se dedica a la generaci??n de los modelos, inferencias y predicciones asociadas a los fen??menos en cuesti??n 
+# teniendo en cuenta la aleatoriedad de las observaciones. Se usa para modelar patrones en los datos y extraer 
+# inferencias acerca de la poblaci??n bajo estudio. Estas inferencias pueden tomar la forma de respuestas a 
+# preguntas s??/no (prueba de hip??tesis), estimaciones de unas caracter??sticas num??ricas (estimaci??n), pron??sticos 
+# de futuras observaciones, descripciones de asociaci??n (correlaci??n) o modelamiento de relaciones entre variables 
+# (an??lisis de regresi??n). Otras t??cnicas de modelamiento incluyenanova, series de tiempo y miner??a de datos.
+# Ambas ramas (descriptiva e inferencial) comprenden la estad??stica aplicada. La estad??stica inferencial, por su 
+# parte, se divide en estad??stica param??trica y estad??stica no param??trica.
+
 
 # Ex 6.
 # 6.1
@@ -157,6 +175,44 @@ choose(13,1)*choose(4,4)*choose(48,1)
 # Carta mayor (pachuca)
 1-((choose(13,5)-10)*(choose(4,1)^5)-4)/choose(52,5)
 
+# Ex 10.
+# 10.1
+horas = c(4.1,3.1,4.1,10.8,7.3,1.5,4.8,4.1,2.8,6.1,10.4,2.0,8.8,9.5,5.7,5.9,14.8,5.6,12.9,5.9)
+horas = c(horas,3.4,5.4,4.3,12.1,4.7,5.7,4.2,3.3,5.7,3.9,1.6,3.9,7.1,0.7,3.7,6.1,4.1,10.3,4.0,3.1)
+horas = c(horas,3.0,11.1,6.2,9.2,6.1,3.7,3.5,7.6,4.4,3.1)
+hist(horas,breaks=seq(0,15,by=3),plot=FALSE)
+HRSS <- hist(horas,breaks =seq(0,15,by=3), plot=FALSE)
+HRSS
+HRSS$counts
+cumsum(HRSS$counts)
+cumsum(HRSS$counts/50*100)
+# 10.2
+hist(horas)
+# 10.3
+# El uso de computadoras en casa es sobre todo entre las 3 y 6 horas de uso, y en la gr??fica 
+# podemos observar que sigue una distribuci??n normal.
+
+
+# Ex 11.
+# 11.1
+corredores <- c(49,33,40,37,56,44,46,57,55,32,50,52,43,64,40,46,24,30,37,43,31,43,50,36,61,27,44,35,31,43,52,43,66,31,50,72,26,59,21,47)
+stem(corredores)
+# 11.2
+# Los cuarentea??eros
+# 11.3
+# Los corredores de 43 a??os.
+
+
+# Ex 12.
+# 12.1
+obsX = c(-22,-33,2,29,-13,21,-13,-23,14,3,-37,34,9,-33,20,-3,-15,12,-20,-7)
+obsY = c(22,49,8,-16,10,-28,27,35,-5,-3,48,-29,-18,31,-16,14,18,17,11,-22)
+qqplot(obsX,obsY)
+# 12.2
+regresion <- lm(obsY ~ obsX)
+regresion
+summary(regresion)
+
 
 # Ex 13.
 data <- c(8480, 608, 10498, 3653, 1872, 1374, 14138, 7478, 5794, 4019)
@@ -166,6 +222,141 @@ boxplot(data)
 mean(data)
 # 13.3
 sd(data)
-# 13.4
 
 
+# Ex 14.
+# 14.1
+xi <- c(4,6,11,3,16)
+yi <- c(50,50,40,60,30)
+qqplot(xi,yi)
+# 14.2
+cov(xi,yi)
+# 14.3
+cor(xi,yi)
+
+
+# Ex 15.
+# 15.1
+PA <-2/5
+PA
+PB <-2/5
+PB
+# 15.2
+PUB = 4/5
+PUB
+
+
+# Ex 16.
+# 16.1
+dado1<-c(rep(1,6),rep(2,6),rep(3,6),rep(4,6),rep(5,6),rep(6,6))
+dado2<-c(rep(1:6,6))
+cbind(dado1,dado2)
+# 16.2
+suma <- dado1+dado2
+suma
+6/36
+
+# Ex 17.
+x<-c("SJV", "SVJ", "JSV", "JVS", "VJS", "VSJ")
+y<-c(3, 1, 1, 0, 0, 1)
+z<-cbind(x,y)
+z
+
+
+# Ex 18.
+pnorm(20,8,9,lower.tail=TRUE)-pnorm(-4,8,9,lower.tail=TRUE)
+
+
+# Ex 19.
+1/4
+
+
+# Ex 20.
+(choose(3,0)*choose(5,2))/choose(8,2)
+(choose(3,1)*choose(5,1))/choose(8,2)
+(choose(3,2)*choose(5,0))/choose(8,2)
+
+
+# Ex 21.
+fx <- function(x) (x^2)/3
+fx
+?integrate
+integrate(fx,0,1)
+
+
+# Ex 22.
+dist<-c((choose(4,0)*choose(3,3))/choose(7,3), (choose(4,1)*choose(3,2))/choose(7,3), (choose(4,2)*choose(3,1))/choose(7,3), (choose(4,3)*choose(3,0))/choose(7,3))
+dist
+X <- c(0,1,2,3)
+valoresp <- X*dist
+valoresp
+sum(valoresp)
+
+
+# Ex 23.
+dbinom(2,3,0.25)
+
+
+# Ex 24.
+dgeom(5,1/100)
+
+
+# Ex 25.
+1-dpois(15,10)
+
+
+# Ex 26.
+pnorm(834,800,40,lower.tail=TRUE)-pnorm(778,800,40,lower.tail=TRUE)
+
+
+# Ex 27.
+pnorm(3.01,3,0.005,lower.tail=TRUE)-pnorm(2.99,3,0.005,lower.tail=TRUE)
+
+
+# Ex 28.
+dbinom(2,5,0.2)+dbinom(3,5,0.2)+dbinom(4,5,0.2)+dbinom(5,5,0.2)
+
+
+# Ex 29.
+pgamma(1,shape=2,scale=0.2)
+
+
+# Ex 30.
+
+
+# Ex 31.
+simple.t.test = function (xbar,s,conf.level,n) {
+  alfa= 1-conf.level
+  t=qt(1-alfa/2,n-1)
+  SE= s/sqrt(n)
+  xbar+ c(-t*SE,t*SE)
+}
+simple.t.test(780,40,.95,30)
+
+
+# Ex 32.
+ins <- function (xbar,sigma,conf.level,n) { 
+  alfa<-1-conf.level
+  Z<-qnorm(1-alfa/2)
+  xbar+c(-Z*sigma*(1+1/n)^(1/2),Z*sigma*(1+1/n)^(1/2))
+}
+ins(96.2,.08,.99,30)
+
+
+# Ex 33.
+dif.z.test = function (x1,x2, sigma1, sigma2, conf.level, n1, n2) {
+  alfa=1 -conf.level
+  Z=qnorm(1-alfa/2)
+  SE=sqrt(sigma1^2/n1+sigma2^2/n2)
+  (x1-x2+c(-Z*SE,Z*SE))
+}
+dif.z.test(87.2,78.3,6.3,5.6,.95,50,50)
+
+
+# Ex 34.
+
+
+# Ex 35.
+
+
+# Ex 36.
