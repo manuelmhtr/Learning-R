@@ -320,9 +320,7 @@ dbinom(2,5,0.2)+dbinom(3,5,0.2)+dbinom(4,5,0.2)+dbinom(5,5,0.2)
 # Ex 29.
 pgamma(1,shape=2,scale=0.2)
 
-
 # Ex 30.
-
 
 # Ex 31.
 simple.t.test = function (xbar,s,conf.level,n) {
@@ -354,9 +352,80 @@ dif.z.test(87.2,78.3,6.3,5.6,.95,50,50)
 
 
 # Ex 34.
+# 35.3
+str(possum)
+complete.cases(possum)
+# 35.4
+str(ais)
+# 35.5
+complete.cases(ais)
+# 35.6
+attach(Manitoba.lakes)
+Manitoba.lakes
+attach(Manitoba.lakes)
+plot(log2(area),elevation,pch=16, ylim=c(170,280))
+text(log2(area), elevation, labels=row.names(Manitoba.lakes), pos=4)
+text(log2(area) ~ elevation, labels=area, pos=2)
+title("Manitoba???s Largest Lakes")
+detach(Manitoba.lakes)
+plot(area,log(elevation), pch=16)
 
 
 # Ex 35.
+# 35.1
+bwplot(age~site, data=sexf,xlab="Sites",main="Age for sites")
+bwplot(age~sex, data=possum,xlab="age",main="Age for males&females")
+# 35.2
+with(sexf, stem(totlngth[sex=="f"]))
+with(sexf, median(totlngth))
+# 35.4
+bwplot(rcc~sport,data=ais,xlab="Sport",main="red blood cell count, in")
+bwplot(hg~sport,data=ais,xlab="Sport",main="hemaglobin concentration, in g per decaliter")
+bwplot(hc~sport,data=ais,xlab="Sport",main="hematocrit, percent")
+bwplot(wcc~sport,data=ais,xlab="Sport",main="White blood cell coun, in per liter")
+bwplot(ferr~sport,data=ais,xlab="Sport",main="Plasma ferritinis, ng")
+stripplot(rcc~sex, data=ais,xlab="Sex",main="Red blood cell count, in")
+stripplot(hg~sex, data=ais,xlab="Sex",main="Hemaglobin concentration")
+stripplot(hc~sex, data=ais,xlab="Sex",main="Hematocrit, percent")
+stripplot(wcc~sex, data=ais,xlab="Sex",main="White blood cell count")
+stripplot(ferr~sex, data=ais,xlab="Sex",main="Plasma ferritinis")
+# 35.6
+deathrate <- c(40.7, 36,27,30.5,27.6,83.5)
+hosp <- c("Cliniques of Vienna (1834-63)\n(> 2000 cases pa)",
+          "Enfans Trouves at Petersburg\n(1845-59, 1000-2000 cases pa)",
+          "Pesth (500-1000 cases pa)",
+          "Edinburgh (200-500 cases pa)",
+          "Frankfort (100-200 cases pa)", "Lund (< 100 cases pa)")
+hosp <- factor(hosp, levels=hosp[order(deathrate)])
+dotplot(hosp~deathrate, xlim=c(0,95), xlab="Death rate per 1000 ",type=c("h","p"))
+# 35.10
+with(Animals, cor(brain,body))
+with(Animals, cor(log(brain),log(body)))
+with(Animals, cor(log(brain),log(body), method="spearman"))
 
 
 # Ex 36.
+# 36.3
+split(sample(1:7,7,replace=FALSE),"Bloque1",7)
+split(sample(1:7,7,replace=FALSE),"Bloque2",7)
+split(sample(1:7,7,replace=FALSE),"Bloque3",7)
+split(sample(1:7,7,replace=FALSE),"Bloque4",7)
+# 36.4
+av = c()
+for (i in 1:25) {
+  av[i]<-mean(rnorm(100))
+}
+av
+sd(av)
+av<-plot(av)
+# 36.5
+rnorm(sample(500,20), mean=100, sd=10)
+# 36.7
+x <- runif(10)
+x<-runif(sample(500,20))
+plot(x)
+# 36.9
+X<-rexp(100,0.2)
+plot(density(X))
+mean(X)
+
